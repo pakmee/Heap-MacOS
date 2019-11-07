@@ -25,6 +25,6 @@ public class Heap {
     }
 
     public let events = HeapEventsMethods()
-    public let user = HeapEventsMethods()
+    public let user = HeapUserMethods()
 
 }
