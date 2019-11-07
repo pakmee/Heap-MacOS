@@ -12,8 +12,8 @@ public class Heap {
 
     public static let shared = Heap()
 
-    private var appId: String?
-    private var identity: String?
+    var appId: String?
+    var identity: String?
     
     public var isSetup: Bool {
         return appId != nil && identity != nil
