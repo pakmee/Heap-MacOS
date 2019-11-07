@@ -24,7 +24,7 @@ public class HeapUserMethods {
 
         let encodedData = try JSONEncoder().encode(event)
 
-        let connection = HeapConnection(endpoint: .track)
+        let connection = HeapConnection(endpoint: .addUserProperties)
         connection.request.httpBody = encodedData
 
         try connection.start(completion: completion)
