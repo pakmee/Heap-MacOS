@@ -10,7 +10,7 @@ import Foundation
 
 public class HeapEventsMethods {
 
-    public func track(event: String, properties: [String: Any], timestamp: Date? = nil) throws {
+    public func track(event: String, properties: [String: Any]?, timestamp: Date? = nil) throws {
 
         guard Heap.shared.isSetup else {
             throw HeapError.noSetup
