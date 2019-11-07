@@ -10,7 +10,7 @@ import Foundation
 
 public class HeapEventsMethods {
 
-    public func track(event: String, properties: [String: Any]?, timestamp: Date? = nil) throws {
+    public func track(event: String, properties: [String: Any]?, completion: HeapConnection.Completion?) throws {
 
         guard Heap.shared.isSetup else {
             throw HeapError.noSetup
@@ -22,7 +22,7 @@ public class HeapEventsMethods {
            throw HeapError.noAppIdOrIdentity
        }
 
-        guard let event = try? HeapEvent(appId: appId, identity: identity, event: event, properties: properties, timestamp: timestamp ?? Date()) else {
+        guard let event = try? HeapEvent(appId: appId, identity: identity, event: event, properties: properties) else {
             throw HeapError.invalidProperties
         }
         
@@ -31,7 +31,7 @@ public class HeapEventsMethods {
         let connection = HeapConnection(endpoint: .track)
         connection.request.httpBody = encodedData
 
-        try connection.start()
+        try connection.start(completion: completion)
 
     }
 

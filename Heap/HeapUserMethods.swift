@@ -8,7 +8,7 @@
 
 public class HeapUserMethods {
 
-    public func update(properties: [String: Any]) throws {
+    public func update(properties: [String: Any], completion: HeapConnection.Completion?) throws {
 
         guard Heap.shared.isSetup else {
             throw HeapError.noSetup
@@ -27,7 +27,7 @@ public class HeapUserMethods {
         let connection = HeapConnection(endpoint: .track)
         connection.request.httpBody = encodedData
 
-        try connection.start()
+        try connection.start(completion: completion)
 
     }
 

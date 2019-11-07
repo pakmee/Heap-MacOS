@@ -10,6 +10,8 @@ import Foundation
 
 public class HeapConnection {
 
+    public typealias Completion = (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void
+    
     var request: URLRequest
     var session: URLSession
 
@@ -25,9 +27,13 @@ public class HeapConnection {
 
     }
 
-    func start() throws {
+    func start(completion:Completion?) throws {
         
-        let task = session.dataTask(with: request)
+        let task = session.dataTask(with: request) {
+            (data, response, error) in
+            completion?(data, response, error)
+        }
+
         task.resume()
         
     }
