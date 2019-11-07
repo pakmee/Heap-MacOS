@@ -12,10 +12,10 @@ public class Heap {
 
     public static let shared = Heap()
 
-    var appId: String?
-    var identity: String?
+    private var appId: String?
+    private var identity: String?
     
-    var isSetup: Bool {
+    public var isSetup: Bool {
         return appId != nil && identity != nil
     }
 
