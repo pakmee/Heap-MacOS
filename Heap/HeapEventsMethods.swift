@@ -10,7 +10,7 @@ import Foundation
 
 public class HeapEventsMethods {
 
-    public func track(event: String, properties: [String: Any]?, completion: HeapConnection.Completion?) throws {
+    public func track(event: String, properties: [String: Any]?, completion: HeapConnection.Completion? = nil) throws {
 
         guard Heap.shared.isSetup else {
             throw HeapError.noSetup

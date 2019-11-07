@@ -8,7 +8,7 @@
 
 public class HeapUserMethods {
 
-    public func update(properties: [String: Any], completion: HeapConnection.Completion?) throws {
+    public func update(properties: [String: Any], completion: HeapConnection.Completion? = nil) throws {
 
         guard Heap.shared.isSetup else {
             throw HeapError.noSetup
